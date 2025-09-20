@@ -429,7 +429,7 @@ export async function extractCodebase({
 }> {
   const settings = readSettings();
   const isSmartContextEnabled =
-    settings?.enableDyadPro && settings?.enableProSmartFilesContextMode;
+    settings?.enablemanPro && settings?.enableProSmartFilesContextMode;
 
   try {
     await fsAsync.access(appPath);

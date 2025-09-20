@@ -18,7 +18,7 @@ import log from "electron-log";
 import { FREE_OPENROUTER_MODEL_NAMES } from "../shared/language_model_constants";
 import { getLanguageModelProviders } from "../shared/language_model_helpers";
 import { LanguageModelProvider } from "../ipc_types";
-import { createDyadEngine } from "./llm_engine_provider";
+import { createmanEngine } from "./llm_engine_provider";
 
 import { LM_STUDIO_BASE_URL } from "./lm_studio_utils";
 import { createOllamaProvider } from "./ollama_provider";
@@ -77,9 +77,9 @@ export async function getModelClient(
     throw new Error(`Configuration not found for provider: ${model.provider}`);
   }
 
-  // Handle Dyad Pro override
-  if (dyadApiKey && settings.enableDyadPro) {
-    // Check if the selected provider supports Dyad Pro (has a gateway prefix) OR
+  // Handle man Pro override
+  if (dyadApiKey && settings.enablemanPro) {
+    // Check if the selected provider supports man Pro (has a gateway prefix) OR
     // we're using local engine.
     // IMPORTANT: some providers like OpenAI have an empty string gateway prefix,
     // so we do a nullish and not a truthy check here.
@@ -88,7 +88,7 @@ export async function getModelClient(
         settings.enableProSmartFilesContextMode ||
         settings.enableProLazyEditsMode;
       const provider = isEngineEnabled
-        ? createDyadEngine({
+        ? createmanEngine({
             apiKey: dyadApiKey,
             baseURL: dyadEngineUrl ?? "https://engine.dyad.sh/v1",
             originalProviderId: model.provider,
@@ -110,15 +110,15 @@ export async function getModelClient(
           });
 
       logger.info(
-        `\x1b[1;97;44m Using Dyad Pro API key for model: ${model.name}. engine_enabled=${isEngineEnabled} \x1b[0m`,
+        `\x1b[1;97;44m Using man Pro API key for model: ${model.name}. engine_enabled=${isEngineEnabled} \x1b[0m`,
       );
       if (isEngineEnabled) {
         logger.info(
-          `\x1b[1;30;42m Using Dyad Pro engine: ${dyadEngineUrl ?? "<prod>"} \x1b[0m`,
+          `\x1b[1;30;42m Using man Pro engine: ${dyadEngineUrl ?? "<prod>"} \x1b[0m`,
         );
       } else {
         logger.info(
-          `\x1b[1;30;43m Using Dyad Pro gateway: ${dyadGatewayUrl ?? "<prod>"} \x1b[0m`,
+          `\x1b[1;30;43m Using man Pro gateway: ${dyadGatewayUrl ?? "<prod>"} \x1b[0m`,
         );
       }
       // Do not use free variant (for openrouter).
@@ -141,7 +141,7 @@ export async function getModelClient(
       };
     } else {
       logger.warn(
-        `Dyad Pro enabled, but provider ${model.provider} does not have a gateway prefix defined. Falling back to direct provider connection.`,
+        `man Pro enabled, but provider ${model.provider} does not have a gateway prefix defined. Falling back to direct provider connection.`,
       );
       // Fall through to regular provider logic if gateway prefix is missing
     }

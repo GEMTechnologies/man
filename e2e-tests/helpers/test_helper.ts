@@ -249,13 +249,13 @@ export class PageObject {
     await this.selectTestModel();
   }
 
-  async setUpDyadPro({ autoApprove = false }: { autoApprove?: boolean } = {}) {
+  async setUpmanPro({ autoApprove = false }: { autoApprove?: boolean } = {}) {
     await this.baseSetup();
     await this.goToSettingsTab();
     if (autoApprove) {
       await this.toggleAutoApprove();
     }
-    await this.setUpDyadProvider();
+    await this.setUpmanProvider();
     await this.goToAppsTab();
   }
 
@@ -308,15 +308,15 @@ export class PageObject {
     );
   }
 
-  async setUpDyadProvider() {
+  async setUpmanProvider() {
     await this.page
       .locator("div")
-      .filter({ hasText: /^DyadNeeds Setup$/ })
+      .filter({ hasText: /^manNeeds Setup$/ })
       .nth(1)
       .click();
-    await this.page.getByRole("textbox", { name: "Set Dyad API Key" }).click();
+    await this.page.getByRole("textbox", { name: "Set man API Key" }).click();
     await this.page
-      .getByRole("textbox", { name: "Set Dyad API Key" })
+      .getByRole("textbox", { name: "Set man API Key" })
       .fill("testdyadkey");
     await this.page.getByRole("button", { name: "Save Key" }).click();
   }
@@ -669,7 +669,7 @@ export class PageObject {
 
   getChatInput() {
     return this.page.locator(
-      '[data-lexical-editor="true"][aria-placeholder="Ask Dyad to build..."]',
+      '[data-lexical-editor="true"][aria-placeholder="Ask man to build..."]',
     );
   }
 
@@ -741,7 +741,7 @@ export class PageObject {
       await this.toggleAutoApprove();
     }
     // Azure should already be configured via environment variables
-    // so we don't need additional setup steps like setUpDyadProvider
+    // so we don't need additional setup steps like setUpmanProvider
     await this.goToAppsTab();
   }
 

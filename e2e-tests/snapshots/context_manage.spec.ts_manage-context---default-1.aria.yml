@@ -5,4 +5,4 @@
     - img
   - textbox "src/**/*.tsx"
   - button "Add"
-  - paragraph: Dyad will use the entire codebase as context.
+  - paragraph: man will use the entire codebase as context.

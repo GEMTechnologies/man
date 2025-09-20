@@ -231,7 +231,7 @@ export function ChatInput({ chatId }: { chatId?: number }) {
         <ChatErrorBox
           onDismiss={dismissError}
           error={error}
-          isDyadProEnabled={settings.enableDyadPro ?? false}
+          ismanProEnabled={settings.enablemanPro ?? false}
         />
       )}
       {/* Display loading or error state for proposal */}
@@ -292,7 +292,7 @@ export function ChatInput({ chatId }: { chatId?: number }) {
               onChange={setInputValue}
               onSubmit={handleSubmit}
               onPaste={handlePaste}
-              placeholder="Ask Dyad to build..."
+              placeholder="Ask man to build..."
               excludeCurrentApp={true}
             />
 

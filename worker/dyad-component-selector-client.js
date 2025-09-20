@@ -212,7 +212,7 @@
   function initializeComponentSelector() {
     if (!document.body) {
       console.error(
-        "Dyad component selector initialization failed: document.body not found.",
+        "man component selector initialization failed: document.body not found.",
       );
       return;
     }
@@ -224,10 +224,10 @@
           },
           "*",
         );
-        console.debug("Dyad component selector initialized");
+        console.debug("man component selector initialized");
       } else {
         console.warn(
-          "Dyad component selector not initialized because no DOM elements were tagged",
+          "man component selector not initialized because no DOM elements were tagged",
         );
       }
     }, 0);

@@ -49,7 +49,7 @@ or to provide a custom fetch implementation for e.g. testing.
   settings: UserSettings;
 }
 
-export interface DyadEngineProvider {
+export interface manEngineProvider {
   /**
 Creates a model for text generation.
 */
@@ -67,9 +67,9 @@ Creates a chat model for text generation.
   ): LanguageModelV2;
 }
 
-export function createDyadEngine(
+export function createmanEngine(
   options: ExampleProviderSettings,
-): DyadEngineProvider {
+): manEngineProvider {
   const baseURL = withoutTrailingSlash(options.baseURL);
   logger.info("creating dyad engine with baseURL", baseURL);
 
@@ -167,7 +167,7 @@ export function createDyadEngine(
             headers: {
               ...init.headers,
               ...(modifiedRequestId && {
-                "X-Dyad-Request-Id": modifiedRequestId,
+                "X-man-Request-Id": modifiedRequestId,
               }),
             },
             body: JSON.stringify(parsedBody),

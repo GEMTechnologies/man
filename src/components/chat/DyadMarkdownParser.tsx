@@ -1,26 +1,26 @@
 import React, { useMemo } from "react";
 import ReactMarkdown from "react-markdown";
 
-import { DyadWrite } from "./DyadWrite";
-import { DyadRename } from "./DyadRename";
-import { DyadDelete } from "./DyadDelete";
-import { DyadAddDependency } from "./DyadAddDependency";
-import { DyadExecuteSql } from "./DyadExecuteSql";
-import { DyadAddIntegration } from "./DyadAddIntegration";
-import { DyadEdit } from "./DyadEdit";
-import { DyadCodebaseContext } from "./DyadCodebaseContext";
-import { DyadThink } from "./DyadThink";
+import { manWrite } from "./manWrite";
+import { manRename } from "./manRename";
+import { manDelete } from "./manDelete";
+import { manAddDependency } from "./manAddDependency";
+import { manExecuteSql } from "./manExecuteSql";
+import { manAddIntegration } from "./manAddIntegration";
+import { manEdit } from "./manEdit";
+import { manCodebaseContext } from "./manCodebaseContext";
+import { manThink } from "./manThink";
 import { CodeHighlight } from "./CodeHighlight";
 import { useAtomValue } from "jotai";
 import { isStreamingAtom } from "@/atoms/chatAtoms";
 import { CustomTagState } from "./stateTypes";
-import { DyadOutput } from "./DyadOutput";
-import { DyadProblemSummary } from "./DyadProblemSummary";
+import { manOutput } from "./manOutput";
+import { manProblemSummary } from "./manProblemSummary";
 import { IpcClient } from "@/ipc/ipc_client";
-import { DyadMcpToolCall } from "./DyadMcpToolCall";
-import { DyadMcpToolResult } from "./DyadMcpToolResult";
+import { manMcpToolCall } from "./manMcpToolCall";
+import { manMcpToolResult } from "./manMcpToolResult";
 
-interface DyadMarkdownParserProps {
+interface manMarkdownParserProps {
   content: string;
 }
 
@@ -69,9 +69,9 @@ export const VanillaMarkdownParser = ({ content }: { content: string }) => {
 };
 
 /**
- * Custom component to parse markdown content with Dyad-specific tags
+ * Custom component to parse markdown content with man-specific tags
  */
-export const DyadMarkdownParser: React.FC<DyadMarkdownParserProps> = ({
+export const manMarkdownParser: React.FC<manMarkdownParserProps> = ({
   content,
 }) => {
   const isStreaming = useAtomValue(isStreamingAtom);
@@ -284,7 +284,7 @@ function renderCustomTag(
   switch (tag) {
     case "think":
       return (
-        <DyadThink
+        <manThink
           node={{
             properties: {
               state: getState({ isStreaming, inProgress }),
@@ -292,11 +292,11 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadThink>
+        </manThink>
       );
     case "dyad-write":
       return (
-        <DyadWrite
+        <manWrite
           node={{
             properties: {
               path: attributes.path || "",
@@ -306,12 +306,12 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadWrite>
+        </manWrite>
       );
 
     case "dyad-rename":
       return (
-        <DyadRename
+        <manRename
           node={{
             properties: {
               from: attributes.from || "",
@@ -320,12 +320,12 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadRename>
+        </manRename>
       );
 
     case "dyad-delete":
       return (
-        <DyadDelete
+        <manDelete
           node={{
             properties: {
               path: attributes.path || "",
@@ -333,12 +333,12 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadDelete>
+        </manDelete>
       );
 
     case "dyad-add-dependency":
       return (
-        <DyadAddDependency
+        <manAddDependency
           node={{
             properties: {
               packages: attributes.packages || "",
@@ -346,12 +346,12 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadAddDependency>
+        </manAddDependency>
       );
 
     case "dyad-execute-sql":
       return (
-        <DyadExecuteSql
+        <manExecuteSql
           node={{
             properties: {
               state: getState({ isStreaming, inProgress }),
@@ -360,12 +360,12 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadExecuteSql>
+        </manExecuteSql>
       );
 
     case "dyad-add-integration":
       return (
-        <DyadAddIntegration
+        <manAddIntegration
           node={{
             properties: {
               provider: attributes.provider || "",
@@ -373,12 +373,12 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadAddIntegration>
+        </manAddIntegration>
       );
 
     case "dyad-edit":
       return (
-        <DyadEdit
+        <manEdit
           node={{
             properties: {
               path: attributes.path || "",
@@ -388,12 +388,12 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadEdit>
+        </manEdit>
       );
 
     case "dyad-codebase-context":
       return (
-        <DyadCodebaseContext
+        <manCodebaseContext
           node={{
             properties: {
               files: attributes.files || "",
@@ -402,12 +402,12 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadCodebaseContext>
+        </manCodebaseContext>
       );
 
     case "dyad-mcp-tool-call":
       return (
-        <DyadMcpToolCall
+        <manMcpToolCall
           node={{
             properties: {
               serverName: attributes.server || "",
@@ -416,12 +416,12 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadMcpToolCall>
+        </manMcpToolCall>
       );
 
     case "dyad-mcp-tool-result":
       return (
-        <DyadMcpToolResult
+        <manMcpToolResult
           node={{
             properties: {
               serverName: attributes.server || "",
@@ -430,24 +430,24 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadMcpToolResult>
+        </manMcpToolResult>
       );
 
     case "dyad-output":
       return (
-        <DyadOutput
+        <manOutput
           type={attributes.type as "warning" | "error"}
           message={attributes.message}
         >
           {content}
-        </DyadOutput>
+        </manOutput>
       );
 
     case "dyad-problem-report":
       return (
-        <DyadProblemSummary summary={attributes.summary}>
+        <manProblemSummary summary={attributes.summary}>
           {content}
-        </DyadProblemSummary>
+        </manProblemSummary>
       );
 
     case "dyad-chat-summary":

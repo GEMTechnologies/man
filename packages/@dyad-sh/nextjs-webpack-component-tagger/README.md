@@ -44,7 +44,7 @@ The `data-dyad-name` will be the name of the component.
 
 ## Testing & Publishing
 
-Bump it to an alpha version and test in Dyad app, eg. `"version": "0.0.1-alpha.0",`
+Bump it to an alpha version and test in man app, eg. `"version": "0.0.1-alpha.0",`
 
 Then publish it:
 
@@ -62,4 +62,4 @@ githubUrl: "https://github.com/wwwillchen/nextjs-template",
 
 Run the E2E tests and make sure it passes.
 
-Then, bump to a normal version, e.g. "0.1.0" and then re-publish. We'll try to match the main Dyad app version where possible.
+Then, bump to a normal version, e.g. "0.1.0" and then re-publish. We'll try to match the main man app version where possible.

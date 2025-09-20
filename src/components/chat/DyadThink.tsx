@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Brain, ChevronDown, ChevronUp, Loader } from "lucide-react";
-import { VanillaMarkdownParser } from "./DyadMarkdownParser";
+import { VanillaMarkdownParser } from "./manMarkdownParser";
 import { CustomTagState } from "./stateTypes";
-import { DyadTokenSavings } from "./DyadTokenSavings";
+import { manTokenSavings } from "./manTokenSavings";
 
-interface DyadThinkProps {
+interface manThinkProps {
   node?: any;
   children?: React.ReactNode;
 }
 
-export const DyadThink: React.FC<DyadThinkProps> = ({ children, node }) => {
+export const manThink: React.FC<manThinkProps> = ({ children, node }) => {
   const state = node?.properties?.state as CustomTagState;
   const inProgress = state === "pending";
   const [isExpanded, setIsExpanded] = useState(inProgress);
@@ -22,12 +22,12 @@ export const DyadThink: React.FC<DyadThinkProps> = ({ children, node }) => {
         )
       : null;
 
-  // If it's token savings format, render DyadTokenSavings component
+  // If it's token savings format, render manTokenSavings component
   if (tokenSavingsMatch) {
     const originalTokens = parseFloat(tokenSavingsMatch[1]);
     const smartContextTokens = parseFloat(tokenSavingsMatch[2]);
     return (
-      <DyadTokenSavings
+      <manTokenSavings
         originalTokens={originalTokens}
         smartContextTokens={smartContextTokens}
       />
