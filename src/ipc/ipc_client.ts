@@ -257,8 +257,8 @@ export class IpcClient {
     return IpcClient.instance;
   }
 
-  public async restartDyad(): Promise<void> {
-    await this.ipcRenderer.invoke("restart-dyad");
+  public async restartMan(): Promise<void> {
+    await this.ipcRenderer.invoke("restart-man");
   }
 
   public async reloadEnvPath(): Promise<void> {

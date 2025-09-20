@@ -26,12 +26,12 @@ export function useRunApp() {
 
   const processProxyServerOutput = (output: AppOutput) => {
     const matchesProxyServerStart = output.message.includes(
-      "[dyad-proxy-server]started=[",
+      "[man-proxy-server]started=[",
     );
     if (matchesProxyServerStart) {
       // Extract both proxy URL and original URL using regex
       const proxyUrlMatch = output.message.match(
-        /\[dyad-proxy-server\]started=\[(.*?)\]/,
+        /\[man-proxy-server\]started=\[(.*?)\]/,
       );
       const originalUrlMatch = output.message.match(/original=\[(.*?)\]/);
 

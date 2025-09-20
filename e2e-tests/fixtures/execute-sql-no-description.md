@@ -1,7 +1,7 @@
 No description!
 
-<dyad-execute-sql>
+<man-execute-sql>
 DROP TABLE users;
-</dyad-execute-sql>
+</man-execute-sql>
 
 Done.

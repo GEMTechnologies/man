@@ -41,7 +41,7 @@ or to provide a custom fetch implementation for e.g. testing.
   fetch?: FetchFunction;
 
   originalProviderId: string;
-  dyadOptions: {
+  manOptions: {
     enableLazyEdits?: boolean;
     enableSmartFilesContext?: boolean;
     smartContextMode?: "balanced" | "conservative";
@@ -49,7 +49,7 @@ or to provide a custom fetch implementation for e.g. testing.
   settings: UserSettings;
 }
 
-export interface DyadEngineProvider {
+export interface ManEngineProvider {
   /**
 Creates a model for text generation.
 */
@@ -67,11 +67,11 @@ Creates a chat model for text generation.
   ): LanguageModelV2;
 }
 
-export function createDyadEngine(
+export function createManEngine(
   options: ExampleProviderSettings,
-): DyadEngineProvider {
+): ManEngineProvider {
   const baseURL = withoutTrailingSlash(options.baseURL);
-  logger.info("creating dyad engine with baseURL", baseURL);
+  logger.info("creating man engine with baseURL", baseURL);
 
   // Track request ID attempts
   const requestIdAttempts = new Map<string, number>();
@@ -79,7 +79,7 @@ export function createDyadEngine(
   const getHeaders = () => ({
     Authorization: `Bearer ${loadApiKey({
       apiKey: options.apiKey,
-      environmentVariableName: "DYAD_PRO_API_KEY",
+      environmentVariableName: "MAN_PRO_API_KEY",
       description: "Example API key",
     })}`,
     ...options.headers,
@@ -93,7 +93,7 @@ export function createDyadEngine(
   }
 
   const getCommonModelConfig = (): CommonModelConfig => ({
-    provider: `dyad-engine`,
+    provider: `man-engine`,
     url: ({ path }) => {
       const url = new URL(`${baseURL}${path}`);
       if (options.queryParams) {
@@ -133,13 +133,13 @@ export function createDyadEngine(
               options.settings,
             ),
           };
-          const requestId = parsedBody.dyadRequestId;
-          if ("dyadRequestId" in parsedBody) {
-            delete parsedBody.dyadRequestId;
+          const requestId = parsedBody.manRequestId;
+          if ("manRequestId" in parsedBody) {
+            delete parsedBody.manRequestId;
           }
-          const dyadDisableFiles = parsedBody.dyadDisableFiles;
-          if ("dyadDisableFiles" in parsedBody) {
-            delete parsedBody.dyadDisableFiles;
+          const manDisableFiles = parsedBody.manDisableFiles;
+          if ("manDisableFiles" in parsedBody) {
+            delete parsedBody.manDisableFiles;
           }
 
           // Track and modify requestId with attempt number
@@ -151,13 +151,13 @@ export function createDyadEngine(
           }
 
           // Add files to the request if they exist
-          if (files?.length && !dyadDisableFiles) {
-            parsedBody.dyad_options = {
+          if (files?.length && !manDisableFiles) {
+            parsedBody.man_options = {
               files,
-              enable_lazy_edits: options.dyadOptions.enableLazyEdits,
+              enable_lazy_edits: options.manOptions.enableLazyEdits,
               enable_smart_files_context:
-                options.dyadOptions.enableSmartFilesContext,
-              smart_context_mode: options.dyadOptions.smartContextMode,
+                options.manOptions.enableSmartFilesContext,
+              smart_context_mode: options.manOptions.smartContextMode,
             };
           }
 
@@ -167,7 +167,7 @@ export function createDyadEngine(
             headers: {
               ...init.headers,
               ...(modifiedRequestId && {
-                "X-Dyad-Request-Id": modifiedRequestId,
+                "X-Man-Request-Id": modifiedRequestId,
               }),
             },
             body: JSON.stringify(parsedBody),

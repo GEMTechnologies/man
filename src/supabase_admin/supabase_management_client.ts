@@ -3,11 +3,16 @@ import { readSettings, writeSettings } from "../main/settings";
 import {
   SupabaseManagementAPI,
   SupabaseManagementAPIError,
-} from "@dyad-sh/supabase-management-js";
+} from "@man-sh/supabase-management-js";
 import log from "electron-log";
 import { IS_TEST_BUILD } from "../ipc/utils/test_utils";
 
 const logger = log.scope("supabase_management_client");
+
+type SupabaseProject = {
+  id: string;
+  name?: string;
+};
 
 /**
  * Checks if the Supabase access token is expired or about to expire
@@ -46,7 +51,7 @@ export async function refreshSupabaseToken(): Promise<void> {
   try {
     // Make request to Supabase refresh endpoint
     const response = await fetch(
-      "https://supabase-oauth.dyad.sh/api/connect-supabase/refresh",
+      "https://supabase-oauth.man.sh/api/connect-supabase/refresh",
       {
         method: "POST",
         headers: {
@@ -130,8 +135,9 @@ export async function getSupabaseProjectName(
   }
 
   const supabase = await getSupabaseClient();
-  const projects = await supabase.getProjects();
-  const project = projects?.find((p) => p.id === projectId);
+  const projects: SupabaseProject[] | undefined =
+    await supabase.getProjects();
+  const project = projects?.find((project) => project.id === projectId);
   return project?.name || `<project not found for: ${projectId}>`;
 }
 
@@ -187,7 +193,7 @@ export async function deploySupabaseFunctions({
     JSON.stringify({
       entrypoint_path: "index.ts",
       name: functionName,
-      // See: https://github.com/dyad-sh/dyad/issues/1010
+      // See: https://github.com/man-sh/man/issues/1010
       verify_jwt: false,
     }),
   );

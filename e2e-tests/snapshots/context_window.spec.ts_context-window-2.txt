@@ -32,7 +32,7 @@ tell them that they need to add supabase to their app.
 
 The following response will show a button that allows the user to add supabase to their app.
 
-<dyad-add-integration provider="supabase"></dyad-add-integration>
+<man-add-integration provider="supabase"></man-add-integration>
 
 # Examples
 
@@ -46,7 +46,7 @@ I want to use supabase in my app.
 
 You need to first add Supabase to your app.
 
-<dyad-add-integration provider="supabase"></dyad-add-integration>
+<man-add-integration provider="supabase"></man-add-integration>
 
 ## Example 2: User wants to add auth to their app
 
@@ -58,12 +58,12 @@ I want to add auth to my app.
 
 You need to first add Supabase to your app and then we can add auth.
 
-<dyad-add-integration provider="supabase"></dyad-add-integration>
+<man-add-integration provider="supabase"></man-add-integration>
 
 
 ===
 role: user
-message: This is my codebase. <dyad-file path=".gitignore">
+message: This is my codebase. <man-file path=".gitignore">
 # Logs
 logs
 *.log
@@ -89,9 +89,9 @@ dist-ssr
 *.sln
 *.sw?
 
-</dyad-file>
+</man-file>
 
-<dyad-file path="AI_RULES.md">
+<man-file path="AI_RULES.md">
 # Tech Stack
 
 - You are building a React application.
@@ -112,23 +112,23 @@ Available packages and libraries:
 - You have ALL the necessary Radix UI components installed.
 - Use prebuilt components from the shadcn/ui library after importing them. Note that these files shouldn't be edited, so make new components if you need to change them.
 
-</dyad-file>
+</man-file>
 
-<dyad-file path="components.json">
+<man-file path="components.json">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="eslint.config.js">
+<man-file path="eslint.config.js">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="index.html">
+<man-file path="index.html">
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>dyad-generated-app</title>
+    <title>man-generated-app</title>
   </head>
 
   <body>
@@ -137,9 +137,9 @@ Available packages and libraries:
   </body>
 </html>
 
-</dyad-file>
+</man-file>
 
-<dyad-file path="postcss.config.js">
+<man-file path="postcss.config.js">
 export default {
   plugins: {
     tailwindcss: {},
@@ -147,26 +147,26 @@ export default {
   },
 };
 
-</dyad-file>
+</man-file>
 
-<dyad-file path="public/favicon.ico">
+<man-file path="public/favicon.ico">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="public/placeholder.svg">
+<man-file path="public/placeholder.svg">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="public/robots.txt">
+<man-file path="public/robots.txt">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="README.md">
-# Welcome to your Dyad app
+<man-file path="README.md">
+# Welcome to your man app
 
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/App.css">
+<man-file path="src/App.css">
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -210,9 +210,9 @@ export default {
   color: #888;
 }
 
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/App.tsx">
+<man-file path="src/App.tsx">
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -241,223 +241,223 @@ const App = () => (
 
 export default App;
 
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/made-with-dyad.tsx">
-export const MadeWithDyad = () => {
+<man-file path="src/components/made-with-man.tsx">
+export const MadeWithMan = () => {
   return (
     <div className="p-4 text-center">
       <a
-        href="https://www.dyad.sh/"
+        href="https://www.man.sh/"
         target="_blank"
         rel="noopener noreferrer"
         className="text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
       >
-        Made with Dyad
+        Made with man
       </a>
     </div>
   );
 };
 
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/accordion.tsx">
+<man-file path="src/components/ui/accordion.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/alert-dialog.tsx">
+<man-file path="src/components/ui/alert-dialog.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/alert.tsx">
+<man-file path="src/components/ui/alert.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/aspect-ratio.tsx">
+<man-file path="src/components/ui/aspect-ratio.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/avatar.tsx">
+<man-file path="src/components/ui/avatar.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/badge.tsx">
+<man-file path="src/components/ui/badge.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/breadcrumb.tsx">
+<man-file path="src/components/ui/breadcrumb.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/button.tsx">
+<man-file path="src/components/ui/button.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/calendar.tsx">
+<man-file path="src/components/ui/calendar.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/card.tsx">
+<man-file path="src/components/ui/card.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/carousel.tsx">
+<man-file path="src/components/ui/carousel.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/chart.tsx">
+<man-file path="src/components/ui/chart.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/checkbox.tsx">
+<man-file path="src/components/ui/checkbox.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/collapsible.tsx">
+<man-file path="src/components/ui/collapsible.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/command.tsx">
+<man-file path="src/components/ui/command.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/context-menu.tsx">
+<man-file path="src/components/ui/context-menu.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/dialog.tsx">
+<man-file path="src/components/ui/dialog.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/drawer.tsx">
+<man-file path="src/components/ui/drawer.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/dropdown-menu.tsx">
+<man-file path="src/components/ui/dropdown-menu.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/form.tsx">
+<man-file path="src/components/ui/form.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/hover-card.tsx">
+<man-file path="src/components/ui/hover-card.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/input-otp.tsx">
+<man-file path="src/components/ui/input-otp.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/input.tsx">
+<man-file path="src/components/ui/input.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/label.tsx">
+<man-file path="src/components/ui/label.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/menubar.tsx">
+<man-file path="src/components/ui/menubar.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/navigation-menu.tsx">
+<man-file path="src/components/ui/navigation-menu.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/pagination.tsx">
+<man-file path="src/components/ui/pagination.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/popover.tsx">
+<man-file path="src/components/ui/popover.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/progress.tsx">
+<man-file path="src/components/ui/progress.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/radio-group.tsx">
+<man-file path="src/components/ui/radio-group.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/resizable.tsx">
+<man-file path="src/components/ui/resizable.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/scroll-area.tsx">
+<man-file path="src/components/ui/scroll-area.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/select.tsx">
+<man-file path="src/components/ui/select.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/separator.tsx">
+<man-file path="src/components/ui/separator.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/sheet.tsx">
+<man-file path="src/components/ui/sheet.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/sidebar.tsx">
+<man-file path="src/components/ui/sidebar.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/skeleton.tsx">
+<man-file path="src/components/ui/skeleton.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/slider.tsx">
+<man-file path="src/components/ui/slider.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/sonner.tsx">
+<man-file path="src/components/ui/sonner.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/switch.tsx">
+<man-file path="src/components/ui/switch.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/table.tsx">
+<man-file path="src/components/ui/table.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/tabs.tsx">
+<man-file path="src/components/ui/tabs.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/textarea.tsx">
+<man-file path="src/components/ui/textarea.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/toast.tsx">
+<man-file path="src/components/ui/toast.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/toaster.tsx">
+<man-file path="src/components/ui/toaster.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/toggle-group.tsx">
+<man-file path="src/components/ui/toggle-group.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/toggle.tsx">
+<man-file path="src/components/ui/toggle.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/tooltip.tsx">
+<man-file path="src/components/ui/tooltip.tsx">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/components/ui/use-toast.ts">
+<man-file path="src/components/ui/use-toast.ts">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/globals.css">
+<man-file path="src/globals.css">
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -560,9 +560,9 @@ export const MadeWithDyad = () => {
   }
 }
 
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/hooks/use-mobile.tsx">
+<man-file path="src/hooks/use-mobile.tsx">
 import * as React from "react";
 
 const MOBILE_BREAKPOINT = 768;
@@ -585,9 +585,9 @@ export function useIsMobile() {
   return !!isMobile;
 }
 
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/hooks/use-toast.ts">
+<man-file path="src/hooks/use-toast.ts">
 import * as React from "react";
 
 import type { ToastActionElement, ToastProps } from "@/components/ui/toast";
@@ -777,9 +777,9 @@ function useToast() {
 
 export { useToast, toast };
 
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/lib/utils.ts">
+<man-file path="src/lib/utils.ts">
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -787,21 +787,21 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/main.tsx">
+<man-file path="src/main.tsx">
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./globals.css";
 
 createRoot(document.getElementById("root")!).render(<App />);
 
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/pages/Index.tsx">
+<man-file path="src/pages/Index.tsx">
 // Update this page (the content is just a fallback if you fail to update the page)
 
-import { MadeWithDyad } from "@/components/made-with-dyad";
+import { MadeWithMan } from "@/components/made-with-man";
 
 const Index = () => {
   return (
@@ -812,16 +812,16 @@ const Index = () => {
           Start building your amazing project here!
         </p>
       </div>
-      <MadeWithDyad />
+      <MadeWithMan />
     </div>
   );
 };
 
 export default Index;
 
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/pages/NotFound.tsx">
+<man-file path="src/pages/NotFound.tsx">
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
@@ -850,9 +850,9 @@ const NotFound = () => {
 
 export default NotFound;
 
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/utils/toast.ts">
+<man-file path="src/utils/toast.ts">
 import { toast } from "sonner";
 
 export const showSuccess = (message: string) => {
@@ -871,14 +871,14 @@ export const dismissToast = (toastId: string) => {
   toast.dismiss(toastId);
 };
 
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/vite-env.d.ts">
+<man-file path="src/vite-env.d.ts">
 /// <reference types="vite/client" />
 
-</dyad-file>
+</man-file>
 
-<dyad-file path="tailwind.config.ts">
+<man-file path="tailwind.config.ts">
 import type { Config } from "tailwindcss";
 
 export default {
@@ -976,21 +976,21 @@ export default {
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;
 
-</dyad-file>
+</man-file>
 
-<dyad-file path="tsconfig.app.json">
+<man-file path="tsconfig.app.json">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="tsconfig.json">
+<man-file path="tsconfig.json">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="tsconfig.node.json">
+<man-file path="tsconfig.node.json">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="vercel.json">
+<man-file path="vercel.json">
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
@@ -1001,11 +1001,11 @@ export default {
   ]
 }
 
-</dyad-file>
+</man-file>
 
-<dyad-file path="vite.config.ts">
+<man-file path="vite.config.ts">
 import { defineConfig } from "vite";
-import dyadComponentTagger from "@dyad-sh/react-vite-component-tagger";
+import manComponentTagger from "@man-sh/react-vite-component-tagger";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
@@ -1014,7 +1014,7 @@ export default defineConfig(() => ({
     host: "::",
     port: 8080,
   },
-  plugins: [dyadComponentTagger(), react()],
+  plugins: [manComponentTagger(), react()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -1022,7 +1022,7 @@ export default defineConfig(() => ({
   },
 }));
 
-</dyad-file>
+</man-file>
 
 
 
@@ -1052,7 +1052,7 @@ message: [dump] tc=3
 
 ===
 role: assistant
-message: [[dyad-dump-path=*]]
+message: [[man-dump-path=*]]
 
 ===
 role: user

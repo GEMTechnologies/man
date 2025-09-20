@@ -14,7 +14,7 @@ tell them that they need to add supabase to their app.
 
 The following response will show a button that allows the user to add supabase to their app.
 
-<dyad-add-integration provider="supabase"></dyad-add-integration>
+<man-add-integration provider="supabase"></man-add-integration>
 
 # Examples
 
@@ -28,7 +28,7 @@ I want to use supabase in my app.
 
 You need to first add Supabase to your app.
 
-<dyad-add-integration provider="supabase"></dyad-add-integration>
+<man-add-integration provider="supabase"></man-add-integration>
 
 ## Example 2: User wants to add auth to their app
 
@@ -40,23 +40,23 @@ I want to add auth to my app.
 
 You need to first add Supabase to your app and then we can add auth.
 
-<dyad-add-integration provider="supabase"></dyad-add-integration>
+<man-add-integration provider="supabase"></man-add-integration>
 
 
 ===
 role: user
-message: This is my codebase. <dyad-file path="manual/baz.json">
+message: This is my codebase. <man-file path="manual/baz.json">
 ["even json is included"]
 
-</dyad-file>
+</man-file>
 
-<dyad-file path="manual/file.ts">
+<man-file path="manual/file.ts">
 
-</dyad-file>
+</man-file>
 
-<dyad-file path="manual/sub-manual/sub-manual.js">
+<man-file path="manual/sub-manual/sub-manual.js">
 
-</dyad-file>
+</man-file>
 
 
 
@@ -70,7 +70,7 @@ message: [dump]
 
 ===
 role: assistant
-message: [[dyad-dump-path=*]]
+message: [[man-dump-path=*]]
 
 ===
 role: user

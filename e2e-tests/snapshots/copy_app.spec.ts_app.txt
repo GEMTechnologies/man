@@ -111,7 +111,7 @@ A file (2)
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>dyad-generated-app</title>
+    <title>man-generated-app</title>
   </head>
 
   <body>
@@ -186,7 +186,7 @@ A file (2)
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@dyad-sh/react-vite-component-tagger": "^0.8.0",
+    "@man-sh/react-vite-component-tagger": "^0.8.0",
     "@eslint/js": "^9.9.0",
     "@tailwindcss/typography": "^0.5.15",
     "@types/node": "^22.5.5",
@@ -240,7 +240,7 @@ Allow: /
 
 
 === README.md ===
-# Welcome to your Dyad app
+# Welcome to your man app
 
 
 === src/App.css ===
@@ -318,17 +318,17 @@ const App = () => (
 export default App;
 
 
-=== src/components/made-with-dyad.tsx ===
-export const MadeWithDyad = () => {
+=== src/components/made-with-man.tsx ===
+export const MadeWithMan = () => {
   return (
     <div className="p-4 text-center">
       <a
-        href="https://www.dyad.sh/"
+        href="https://www.man.sh/"
         target="_blank"
         rel="noopener noreferrer"
         className="text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
       >
-        Made with Dyad
+        Made with man
       </a>
     </div>
   );
@@ -5592,7 +5592,7 @@ createRoot(document.getElementById("root")!).render(<App />);
 === src/pages/Index.tsx ===
 // Update this page (the content is just a fallback if you fail to update the page)
 
-import { MadeWithDyad } from "@/components/made-with-dyad";
+import { MadeWithMan } from "@/components/made-with-man";
 
 const Index = () => {
   return (
@@ -5603,7 +5603,7 @@ const Index = () => {
           Start building your amazing project here!
         </p>
       </div>
-      <MadeWithDyad />
+      <MadeWithMan />
     </div>
   );
 };
@@ -5858,7 +5858,7 @@ export default {
 
 === vite.config.ts ===
 import { defineConfig } from "vite";
-import dyadComponentTagger from "@dyad-sh/react-vite-component-tagger";
+import manComponentTagger from "@man-sh/react-vite-component-tagger";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
@@ -5867,7 +5867,7 @@ export default defineConfig(() => ({
     host: "::",
     port: 8080,
   },
-  plugins: [dyadComponentTagger(), react()],
+  plugins: [manComponentTagger(), react()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

@@ -57,21 +57,21 @@ message: [call_tool=calculator_add]
 
 ===
 role: assistant
-message: <dyad-mcp-tool-call server="testing-mcp-server" tool="calculator_add">
+message: <man-mcp-tool-call server="testing-mcp-server" tool="calculator_add">
 {"a":1,"b":2}
-</dyad-mcp-tool-call>
-<dyad-mcp-tool-result server="testing-mcp-server" tool="calculator_add">
+</man-mcp-tool-call>
+<man-mcp-tool-result server="testing-mcp-server" tool="calculator_add">
 {"content":[{"type":"text","text":"3"}],"isError":false}
-</dyad-mcp-tool-result>
+</man-mcp-tool-result>
 
-  <dyad-write path="file1.txt">
+  <man-write path="file1.txt">
   A file (2)
-  </dyad-write>
+  </man-write>
   More
   EOM
-  <dyad-write path="file1.txt">
+  <man-write path="file1.txt">
   A file (2)
-  </dyad-write>
+  </man-write>
   More
   EOM
 

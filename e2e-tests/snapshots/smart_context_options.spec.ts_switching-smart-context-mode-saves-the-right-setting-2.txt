@@ -6,7 +6,7 @@
   "providerSettings": {
     "auto": {
       "apiKey": {
-        "value": "testdyadkey",
+        "value": "testmankey",
         "encryptionType": "plaintext"
       }
     }
@@ -14,7 +14,7 @@
   "telemetryConsent": "unset",
   "telemetryUserId": "[UUID]",
   "hasRunBefore": true,
-  "enableDyadPro": true,
+  "enableManPro": true,
   "experiments": {},
   "lastShownReleaseNotesVersion": "[scrubbed]",
   "enableProLazyEditsMode": true,

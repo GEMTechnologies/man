@@ -6,19 +6,19 @@ import remarkGfm from "remark-gfm";
 export function ChatErrorBox({
   onDismiss,
   error,
-  isDyadProEnabled,
+  isManProEnabled,
 }: {
   onDismiss: () => void;
   error: string;
-  isDyadProEnabled: boolean;
+  isManProEnabled: boolean;
 }) {
   if (error.includes("doesn't have a free quota tier")) {
     return (
       <ChatErrorContainer onDismiss={onDismiss}>
         {error}
         <span className="ml-1">
-          <ExternalLink href="https://dyad.sh/pro">
-            Access with Dyad Pro
+          <ExternalLink href="https://man.sh/pro">
+            Access with man Pro
           </ExternalLink>
         </span>{" "}
         or switch to another model.
@@ -36,13 +36,13 @@ export function ChatErrorBox({
       <ChatErrorContainer onDismiss={onDismiss}>
         {error}
         <span className="ml-1">
-          <ExternalLink href="https://dyad.sh/pro">
-            Upgrade to Dyad Pro
+          <ExternalLink href="https://man.sh/pro">
+            Upgrade to man Pro
           </ExternalLink>
         </span>{" "}
         or read the
         <span className="ml-1">
-          <ExternalLink href="https://dyad.sh/docs/help/ai-rate-limit">
+          <ExternalLink href="https://man.sh/docs/help/ai-rate-limit">
             Rate limit troubleshooting guide.
           </ExternalLink>
         </span>
@@ -54,22 +54,22 @@ export function ChatErrorBox({
     return (
       <ChatInfoContainer onDismiss={onDismiss}>
         <span>
-          Looks like you don't have a valid Dyad Pro key.{" "}
-          <ExternalLink href="https://dyad.sh/pro">
-            Upgrade to Dyad Pro
+          Looks like you don't have a valid man Pro key.{" "}
+          <ExternalLink href="https://man.sh/pro">
+            Upgrade to man Pro
           </ExternalLink>{" "}
           today.
         </span>
       </ChatInfoContainer>
     );
   }
-  if (isDyadProEnabled && error.includes("ExceededBudget:")) {
+  if (isManProEnabled && error.includes("ExceededBudget:")) {
     return (
       <ChatInfoContainer onDismiss={onDismiss}>
         <span>
-          You have used all of your Dyad AI credits this month.{" "}
-          <ExternalLink href="https://academy.dyad.sh/subscription">
-            Upgrade to Dyad Max
+          You have used all of your man AI credits this month.{" "}
+          <ExternalLink href="https://academy.man.sh/subscription">
+            Upgrade to man Max
           </ExternalLink>{" "}
           and get more AI credits
         </span>

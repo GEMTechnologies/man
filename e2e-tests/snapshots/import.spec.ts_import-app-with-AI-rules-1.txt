@@ -16,7 +16,7 @@ tell them that they need to add supabase to their app.
 
 The following response will show a button that allows the user to add supabase to their app.
 
-<dyad-add-integration provider="supabase"></dyad-add-integration>
+<man-add-integration provider="supabase"></man-add-integration>
 
 # Examples
 
@@ -30,7 +30,7 @@ I want to use supabase in my app.
 
 You need to first add Supabase to your app.
 
-<dyad-add-integration provider="supabase"></dyad-add-integration>
+<man-add-integration provider="supabase"></man-add-integration>
 
 ## Example 2: User wants to add auth to their app
 
@@ -42,12 +42,12 @@ I want to add auth to my app.
 
 You need to first add Supabase to your app and then we can add auth.
 
-<dyad-add-integration provider="supabase"></dyad-add-integration>
+<man-add-integration provider="supabase"></man-add-integration>
 
 
 ===
 role: user
-message: This is my codebase. <dyad-file path=".gitignore">
+message: This is my codebase. <man-file path=".gitignore">
 # Logs
 logs
 *.log
@@ -73,22 +73,22 @@ dist-ssr
 *.sln
 *.sw?
 
-</dyad-file>
+</man-file>
 
-<dyad-file path="AI_RULES.md">
+<man-file path="AI_RULES.md">
 [[beginning of AI_RULES.md]]
 There's already AI rules...
 [[end of AI_RULES.md]]
 
-</dyad-file>
+</man-file>
 
-<dyad-file path="index.html">
+<man-file path="index.html">
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>dyad-generated-app</title>
+    <title>man-generated-app</title>
   </head>
 
   <body>
@@ -97,41 +97,41 @@ There's already AI rules...
   </body>
 </html>
 
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/App.tsx">
+<man-file path="src/App.tsx">
 const App = () => <div>Minimal imported app</div>;
 
 export default App;
 
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/main.tsx">
+<man-file path="src/main.tsx">
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 
 createRoot(document.getElementById("root")!).render(<App />);
 
-</dyad-file>
+</man-file>
 
-<dyad-file path="src/vite-env.d.ts">
+<man-file path="src/vite-env.d.ts">
 /// <reference types="vite/client" />
 
-</dyad-file>
+</man-file>
 
-<dyad-file path="tsconfig.app.json">
+<man-file path="tsconfig.app.json">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="tsconfig.json">
+<man-file path="tsconfig.json">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="tsconfig.node.json">
+<man-file path="tsconfig.node.json">
 // File contents excluded from context
-</dyad-file>
+</man-file>
 
-<dyad-file path="vite.config.ts">
+<man-file path="vite.config.ts">
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
@@ -149,7 +149,7 @@ export default defineConfig(() => ({
   },
 }));
 
-</dyad-file>
+</man-file>
 
 
 

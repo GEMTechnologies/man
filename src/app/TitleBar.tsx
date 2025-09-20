@@ -10,7 +10,7 @@ import { providerSettingsRoute } from "@/routes/settings/providers/$provider";
 import { cn } from "@/lib/utils";
 import { useDeepLink } from "@/contexts/DeepLinkContext";
 import { useEffect, useState } from "react";
-import { DyadProSuccessDialog } from "@/components/DyadProSuccessDialog";
+import { ManProSuccessDialog } from "@/components/ManProSuccessDialog";
 import { useTheme } from "@/contexts/ThemeContext";
 import { IpcClient } from "@/ipc/ipc_client";
 import { useUserBudgetInfo } from "@/hooks/useUserBudgetInfo";
@@ -45,16 +45,16 @@ export const TitleBar = () => {
     checkPlatform();
   }, []);
 
-  const showDyadProSuccessDialog = () => {
+  const showManProSuccessDialog = () => {
     setIsSuccessDialogOpen(true);
   };
 
   const { lastDeepLink } = useDeepLink();
   useEffect(() => {
     const handleDeepLink = async () => {
-      if (lastDeepLink?.type === "dyad-pro-return") {
+      if (lastDeepLink?.type === "man-pro-return") {
         await refreshSettings();
-        showDyadProSuccessDialog();
+        showManProSuccessDialog();
       }
     };
     handleDeepLink();
@@ -72,15 +72,15 @@ export const TitleBar = () => {
     }
   };
 
-  const isDyadPro = !!settings?.providerSettings?.auto?.apiKey?.value;
-  const isDyadProEnabled = Boolean(settings?.enableDyadPro);
+  const isManPro = !!settings?.providerSettings?.auto?.apiKey?.value;
+  const isManProEnabled = Boolean(settings?.enableManPro);
 
   return (
     <>
       <div className="@container z-11 w-full h-11 bg-(--sidebar) absolute top-0 left-0 app-region-drag flex items-center">
         <div className={`${showWindowControls ? "pl-2" : "pl-18"}`}></div>
 
-        <img src={logo} alt="Dyad Logo" className="w-6 h-6 mr-0.5" />
+        <img src={logo} alt="man Logo" className="w-6 h-6 mr-0.5" />
         <Button
           data-testid="title-bar-app-name-button"
           variant="outline"
@@ -92,7 +92,7 @@ export const TitleBar = () => {
         >
           {displayText}
         </Button>
-        {isDyadPro && <DyadProButton isDyadProEnabled={isDyadProEnabled} />}
+        {isManPro && <ManProButton isManProEnabled={isManProEnabled} />}
 
         {/* Preview Header */}
         {location.pathname === "/chat" && (
@@ -104,7 +104,7 @@ export const TitleBar = () => {
         {showWindowControls && <WindowsControls />}
       </div>
 
-      <DyadProSuccessDialog
+      <ManProSuccessDialog
         isOpen={isSuccessDialogOpen}
         onClose={() => setIsSuccessDialogOpen(false)}
       />
@@ -193,16 +193,16 @@ function WindowsControls() {
   );
 }
 
-export function DyadProButton({
-  isDyadProEnabled,
+export function ManProButton({
+  isManProEnabled,
 }: {
-  isDyadProEnabled: boolean;
+  isManProEnabled: boolean;
 }) {
   const { navigate } = useRouter();
   const { userBudget } = useUserBudgetInfo();
   return (
     <Button
-      data-testid="title-bar-dyad-pro-button"
+      data-testid="title-bar-man-pro-button"
       onClick={() => {
         navigate({
           to: providerSettingsRoute.id,
@@ -212,12 +212,12 @@ export function DyadProButton({
       variant="outline"
       className={cn(
         "hidden @2xl:block ml-1 no-app-region-drag h-7 bg-indigo-600 text-white dark:bg-indigo-600 dark:text-white text-xs px-2 pt-1 pb-1",
-        !isDyadProEnabled && "bg-zinc-600 dark:bg-zinc-600",
+        !isManProEnabled && "bg-zinc-600 dark:bg-zinc-600",
       )}
       size="sm"
     >
-      {isDyadProEnabled ? "Pro" : "Pro (off)"}
-      {userBudget && isDyadProEnabled && (
+      {isManProEnabled ? "Pro" : "Pro (off)"}
+      {userBudget && isManProEnabled && (
         <AICreditStatus userBudget={userBudget} />
       )}
     </Button>

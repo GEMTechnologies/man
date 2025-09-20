@@ -32,7 +32,7 @@ tell them that they need to add supabase to their app.
 
 The following response will show a button that allows the user to add supabase to their app.
 
-<dyad-add-integration provider="supabase"></dyad-add-integration>
+<man-add-integration provider="supabase"></man-add-integration>
 
 # Examples
 
@@ -46,7 +46,7 @@ I want to use supabase in my app.
 
 You need to first add Supabase to your app.
 
-<dyad-add-integration provider="supabase"></dyad-add-integration>
+<man-add-integration provider="supabase"></man-add-integration>
 
 ## Example 2: User wants to add auth to their app
 
@@ -58,15 +58,15 @@ I want to add auth to my app.
 
 You need to first add Supabase to your app and then we can add auth.
 
-<dyad-add-integration provider="supabase"></dyad-add-integration>
+<man-add-integration provider="supabase"></man-add-integration>
 
 
 ===
 role: user
-message: This is my codebase. <dyad-file path="src/pages/Index.tsx">
+message: This is my codebase. <man-file path="src/pages/Index.tsx">
 // Update this page (the content is just a fallback if you fail to update the page)
 
-import { MadeWithDyad } from "@/components/made-with-dyad";
+import { MadeWithMan } from "@/components/made-with-man";
 
 const Index = () => {
   return (
@@ -77,14 +77,14 @@ const Index = () => {
           Start building your amazing project here!
         </p>
       </div>
-      <MadeWithDyad />
+      <MadeWithMan />
     </div>
   );
 };
 
 export default Index;
 
-</dyad-file>
+</man-file>
 
 
 

@@ -2,13 +2,24 @@ import { IS_TEST_BUILD } from "@/ipc/utils/test_utils";
 import { getSupabaseClient } from "./supabase_management_client";
 import { SUPABASE_SCHEMA_QUERY } from "./supabase_schema_query";
 
+type SupabaseApiKey = {
+  name?: string | null;
+  type?: string | null;
+  api_key: string;
+  [key: string]: unknown;
+};
+
+type SupabaseSecret = {
+  name: string;
+};
+
 async function getPublishableKey({ projectId }: { projectId: string }) {
   if (IS_TEST_BUILD) {
     return "test-publishable-key";
   }
 
   const supabase = await getSupabaseClient();
-  let keys;
+  let keys: SupabaseApiKey[] | undefined;
   try {
     keys = await supabase.getProjectApiKeys(projectId);
   } catch (error) {
@@ -20,13 +31,12 @@ async function getPublishableKey({ projectId }: { projectId: string }) {
     throw new Error("No keys found for Supabase project " + projectId);
   }
   const publishableKey = keys.find(
-    (key) =>
-      (key as any)["name"] === "anon" || (key as any)["type"] === "publishable",
+    (key) => key.name === "anon" || key.type === "publishable",
   );
 
   if (!publishableKey) {
     throw new Error(
-      "No publishable key found for project. Make sure you are connected to the correct Supabase account and project. See https://dyad.sh/docs/integrations/supabase#no-publishable-keys",
+      "No publishable key found for project. Make sure you are connected to the correct Supabase account and project. See https://man.sh/docs/integrations/supabase#no-publishable-keys",
     );
   }
   return publishableKey.api_key;
@@ -68,7 +78,8 @@ export async function getSupabaseContext({
     SUPABASE_SCHEMA_QUERY,
   );
 
-  const secrets = await supabase.getSecrets(supabaseProjectId);
+  const secrets: SupabaseSecret[] | undefined =
+    await supabase.getSecrets(supabaseProjectId);
   const secretNames = secrets?.map((secret) => secret.name);
 
   // TODO: include EDGE FUNCTIONS and SECRETS!

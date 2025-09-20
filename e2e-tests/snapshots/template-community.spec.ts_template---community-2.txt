@@ -11,7 +11,7 @@
   "lastShownReleaseNotesVersion": "[scrubbed]",
   "enableProLazyEditsMode": true,
   "enableProSmartFilesContextMode": true,
-  "selectedTemplateId": "jeff-kazzee/dyad-template-angular",
+  "selectedTemplateId": "jeff-kazzee/man-template-angular",
   "selectedChatMode": "build",
   "acceptedCommunityCode": true,
   "enableAutoFixProblems": false,
