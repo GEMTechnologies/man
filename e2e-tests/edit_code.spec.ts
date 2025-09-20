@@ -20,7 +20,7 @@ test("edit code", async ({ po }) => {
     .click();
   await po.page
     .getByRole("textbox", { name: "Editor content" })
-    .fill("export const MadeWithDyad = ;");
+    .fill("export const MadeWithman = ;");
 
   // Save the file
   await po.page.getByTestId("save-file-button").click();
@@ -34,7 +34,7 @@ test("edit code", async ({ po }) => {
     path.join(appPath, editedFilePath),
     "utf8",
   );
-  expect(editedFile).toContain("export const MadeWithDyad = ;");
+  expect(editedFile).toContain("export const MadeWithman = ;");
 });
 
 test("edit code edits the right file", async ({ po }) => {
@@ -59,7 +59,7 @@ test("edit code edits the right file", async ({ po }) => {
     .click();
   await po.page
     .getByRole("textbox", { name: "Editor content" })
-    .fill("export const MadeWithDyad = ;");
+    .fill("export const MadeWithman = ;");
 
   // Save the file by switching files
   await po.page.getByText("robots.txt").click();
@@ -73,7 +73,7 @@ test("edit code edits the right file", async ({ po }) => {
     path.join(appPath, editedFilePath),
     "utf8",
   );
-  expect(editedFile).toContain("export const MadeWithDyad = ;");
+  expect(editedFile).toContain("export const MadeWithman = ;");
 
   // Make sure the robots.txt file is not edited
   const editedRobotsFile = fs.readFileSync(

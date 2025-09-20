@@ -2,12 +2,12 @@ import React, { useMemo, useState } from "react";
 import { CheckCircle, ChevronsUpDown, ChevronsDownUp } from "lucide-react";
 import { CodeHighlight } from "./CodeHighlight";
 
-interface DyadMcpToolResultProps {
+interface manMcpToolResultProps {
   node?: any;
   children?: React.ReactNode;
 }
 
-export const DyadMcpToolResult: React.FC<DyadMcpToolResultProps> = ({
+export const manMcpToolResult: React.FC<manMcpToolResultProps> = ({
   node,
   children,
 }) => {

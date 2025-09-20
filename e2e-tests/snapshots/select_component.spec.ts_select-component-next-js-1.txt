@@ -118,7 +118,7 @@ You need to first add Supabase to your app and then we can add auth.
 ===
 role: user
 message: This is my codebase. <dyad-file path="src/app/page.tsx">
-import { MadeWithDyad } from "@/components/made-with-dyad";
+import { MadeWithman } from "@/components/made-with-dyad";
 
 export default function Home() {
   return (
@@ -126,7 +126,7 @@ export default function Home() {
       <main className="flex flex-col gap-8 row-start-1 items-center sm:items-start">
         <h1>Blank page</h1>
       </main>
-      <MadeWithDyad />
+      <MadeWithman />
     </div>
   );
 }
@@ -158,6 +158,6 @@ Snippet:
       <main className="flex flex-col gap-8 row-start-1 items-center sm:items-start">
         <h1>Blank page</h1> // <-- EDIT HERE
       </main>
-      <MadeWithDyad />
+      <MadeWithman />
     </div>
 ```

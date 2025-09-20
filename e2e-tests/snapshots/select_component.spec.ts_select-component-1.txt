@@ -66,7 +66,7 @@ role: user
 message: This is my codebase. <dyad-file path="src/pages/Index.tsx">
 // Update this page (the content is just a fallback if you fail to update the page)
 
-import { MadeWithDyad } from "@/components/made-with-dyad";
+import { MadeWithman } from "@/components/made-with-dyad";
 
 const Index = () => {
   return (
@@ -77,7 +77,7 @@ const Index = () => {
           Start building your amazing project here!
         </p>
       </div>
-      <MadeWithDyad />
+      <MadeWithman />
     </div>
   );
 };

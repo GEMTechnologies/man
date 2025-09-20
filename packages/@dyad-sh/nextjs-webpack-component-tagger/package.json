@@ -22,7 +22,7 @@
     "react",
     "dyad"
   ],
-  "author": "Dyad",
+  "author": "man",
   "license": "Apache-2.0",
   "peerDependencies": {
     "webpack": "^5.0.0"

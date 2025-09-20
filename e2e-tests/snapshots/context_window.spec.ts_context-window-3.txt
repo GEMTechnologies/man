@@ -162,7 +162,7 @@ export default {
 </dyad-file>
 
 <dyad-file path="README.md">
-# Welcome to your Dyad app
+# Welcome to your man app
 
 </dyad-file>
 
@@ -244,7 +244,7 @@ export default App;
 </dyad-file>
 
 <dyad-file path="src/components/made-with-dyad.tsx">
-export const MadeWithDyad = () => {
+export const MadeWithman = () => {
   return (
     <div className="p-4 text-center">
       <a
@@ -253,7 +253,7 @@ export const MadeWithDyad = () => {
         rel="noopener noreferrer"
         className="text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
       >
-        Made with Dyad
+        Made with man
       </a>
     </div>
   );
@@ -801,7 +801,7 @@ createRoot(document.getElementById("root")!).render(<App />);
 <dyad-file path="src/pages/Index.tsx">
 // Update this page (the content is just a fallback if you fail to update the page)
 
-import { MadeWithDyad } from "@/components/made-with-dyad";
+import { MadeWithman } from "@/components/made-with-dyad";
 
 const Index = () => {
   return (
@@ -812,7 +812,7 @@ const Index = () => {
           Start building your amazing project here!
         </p>
       </div>
-      <MadeWithDyad />
+      <MadeWithman />
     </div>
   );
 };

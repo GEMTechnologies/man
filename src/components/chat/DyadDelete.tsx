@@ -2,13 +2,13 @@ import type React from "react";
 import type { ReactNode } from "react";
 import { Trash2 } from "lucide-react";
 
-interface DyadDeleteProps {
+interface manDeleteProps {
   children?: ReactNode;
   node?: any;
   path?: string;
 }
 
-export const DyadDelete: React.FC<DyadDeleteProps> = ({
+export const manDelete: React.FC<manDeleteProps> = ({
   children,
   node,
   path: pathProp,
