@@ -93,7 +93,7 @@ export async function refreshSupabaseToken(): Promise<void> {
 }
 
 // Function to get the Supabase Management API client
-export async function getSupabaseClient(): Promise<SupabaseManagementAPI> {
+export async function getSupabaseClient(): Promise<any> {
   const settings = readSettings();
 
   // Check if Supabase token exists in settings

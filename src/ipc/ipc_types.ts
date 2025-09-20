@@ -9,6 +9,29 @@ export interface AppOutput {
   appId: number;
 }
 
+export interface PresentationSlide {
+  title: string;
+  bullets: string[];
+  notes?: string;
+  visuals?: string[];
+}
+
+export interface ExportDocumentPayload {
+  title: string;
+  format: string;
+  body: string;
+}
+
+export interface ExportSlidesPayload {
+  title: string;
+  slides: PresentationSlide[];
+}
+
+export interface ExportResult {
+  canceled: boolean;
+  filePath?: string;
+}
+
 export interface RespondToAppInputParams {
   appId: number;
   response: string;

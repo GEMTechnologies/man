@@ -7,9 +7,9 @@ export const selectedAppIdAtom = atom<number | null>(null);
 export const appsListAtom = atom<App[]>([]);
 export const appBasePathAtom = atom<string>("");
 export const versionsListAtom = atom<Version[]>([]);
-export const previewModeAtom = atom<
-  "preview" | "code" | "problems" | "configure" | "publish"
->("preview");
+export const previewModeAtom = atom<"document" | "slides" | "raw">(
+  "document",
+);
 export const selectedVersionIdAtom = atom<string | null>(null);
 export const appOutputAtom = atom<AppOutput[]>([]);
 export const appUrlAtom = atom<

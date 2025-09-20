@@ -128,6 +128,9 @@ function preprocessUnclosedTags(content: string): {
     "man-command",
     "man-mcp-tool-call",
     "man-mcp-tool-result",
+    "man-document",
+    "man-slides",
+    "man-raw-output",
   ];
 
   let processedContent = content;
@@ -197,6 +200,9 @@ function parseCustomTags(content: string): ContentPiece[] {
     "man-command",
     "man-mcp-tool-call",
     "man-mcp-tool-result",
+    "man-document",
+    "man-slides",
+    "man-raw-output",
   ];
 
   const tagPattern = new RegExp(
@@ -270,6 +276,21 @@ function getState({
     return "finished";
   }
   return isStreaming ? "pending" : "aborted";
+}
+
+function countSlidesInContent(content: string): number {
+  try {
+    const parsed = JSON.parse(content);
+    if (Array.isArray(parsed)) {
+      return parsed.length;
+    }
+    if (parsed && Array.isArray(parsed.slides)) {
+      return parsed.slides.length;
+    }
+  } catch (error) {
+    console.debug("Unable to parse slide preview payload", error);
+  }
+  return 0;
 }
 
 /**
@@ -441,6 +462,43 @@ function renderCustomTag(
         >
           {content}
         </ManOutput>
+      );
+
+    case "man-document":
+      return (
+        <div className="rounded-md border border-border bg-muted/40 p-3 text-sm leading-relaxed">
+          <div className="font-medium">
+            📄 {attributes.title || "Document draft updated"}
+          </div>
+          <div className="mt-1 text-xs text-muted-foreground">
+            {attributes.summary ||
+              "Open the Document tab to review the structured manuscript."}
+          </div>
+        </div>
+      );
+
+    case "man-slides": {
+      const slideCount = countSlidesInContent(content);
+      return (
+        <div className="rounded-md border border-border bg-muted/40 p-3 text-sm leading-relaxed">
+          <div className="font-medium">
+            📊 {attributes.title || "Presentation updated"}
+          </div>
+          <div className="mt-1 text-xs text-muted-foreground">
+            {slideCount > 0
+              ? `${slideCount} slides are ready in the Slides tab.`
+              : "Open the Slides tab to review the generated presentation."}
+          </div>
+        </div>
+      );
+    }
+
+    case "man-raw-output":
+      return (
+        <div className="rounded-md border border-dashed border-border bg-muted/20 p-3 text-xs text-muted-foreground">
+          Raw model output captured. Review the Raw Output tab for the streaming
+          response.
+        </div>
       );
 
     case "man-problem-report":

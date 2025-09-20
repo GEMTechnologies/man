@@ -41,7 +41,6 @@ import {
 } from "@/lib/schemas";
 import type { Message } from "@/ipc/ipc_types";
 import { isPreviewOpenAtom } from "@/atoms/viewAtoms";
-import { useRunApp } from "@/hooks/useRunApp";
 import { AutoApproveSwitch } from "../AutoApproveSwitch";
 import { usePostHog } from "posthog-js/react";
 import { CodeHighlight } from "./CodeHighlight";
@@ -292,7 +291,7 @@ export function ChatInput({ chatId }: { chatId?: number }) {
               onChange={setInputValue}
               onSubmit={handleSubmit}
               onPaste={handlePaste}
-              placeholder="Ask man to build..."
+              placeholder="Ask Man to draft a paper, summarize uploads, or plan a presentation..."
               excludeCurrentApp={true}
             />
 
@@ -464,66 +463,6 @@ function WriteCodeProperlyButton() {
   );
 }
 
-function RebuildButton() {
-  const { restartApp } = useRunApp();
-  const posthog = usePostHog();
-  const selectedAppId = useAtomValue(selectedAppIdAtom);
-
-  const onClick = useCallback(async () => {
-    if (!selectedAppId) return;
-
-    posthog.capture("action:rebuild");
-    await restartApp({ removeNodeModules: true });
-  }, [selectedAppId, posthog, restartApp]);
-
-  return (
-    <SuggestionButton onClick={onClick} tooltipText="Rebuild the application">
-      Rebuild app
-    </SuggestionButton>
-  );
-}
-
-function RestartButton() {
-  const { restartApp } = useRunApp();
-  const posthog = usePostHog();
-  const selectedAppId = useAtomValue(selectedAppIdAtom);
-
-  const onClick = useCallback(async () => {
-    if (!selectedAppId) return;
-
-    posthog.capture("action:restart");
-    await restartApp();
-  }, [selectedAppId, posthog, restartApp]);
-
-  return (
-    <SuggestionButton
-      onClick={onClick}
-      tooltipText="Restart the development server"
-    >
-      Restart app
-    </SuggestionButton>
-  );
-}
-
-function RefreshButton() {
-  const { refreshAppIframe } = useRunApp();
-  const posthog = usePostHog();
-
-  const onClick = useCallback(() => {
-    posthog.capture("action:refresh");
-    refreshAppIframe();
-  }, [posthog, refreshAppIframe]);
-
-  return (
-    <SuggestionButton
-      onClick={onClick}
-      tooltipText="Refresh the application preview"
-    >
-      Refresh app
-    </SuggestionButton>
-  );
-}
-
 function KeepGoingButton() {
   const { streamMessage } = useStreamChat();
   const chatId = useAtomValue(selectedChatIdAtom);
@@ -544,7 +483,7 @@ function KeepGoingButton() {
   );
 }
 
-function mapActionToButton(action: SuggestedAction) {
+function mapActionToButton(action: SuggestedAction): React.ReactNode | null {
   switch (action.id) {
     case "summarize-in-new-chat":
       return <SummarizeInNewChatButton />;
@@ -553,28 +492,40 @@ function mapActionToButton(action: SuggestedAction) {
     case "write-code-properly":
       return <WriteCodeProperlyButton />;
     case "rebuild":
-      return <RebuildButton />;
+      return null;
     case "restart":
-      return <RestartButton />;
+      return null;
     case "refresh":
-      return <RefreshButton />;
+      return null;
     case "keep-going":
       return <KeepGoingButton />;
     default:
       console.error(`Unsupported action: ${action.id}`);
-      return (
-        <Button variant="outline" size="sm" disabled key={action.id}>
-          Unsupported: {action.id}
-        </Button>
-      );
+      return null;
   }
 }
 
 function ActionProposalActions({ proposal }: { proposal: ActionProposal }) {
+  const renderedActions = proposal.actions
+    .map((action, index) => ({
+      key: `${action.id}-${index}`,
+      node: mapActionToButton(action),
+    }))
+    .filter(
+      (entry): entry is { key: string; node: React.ReactNode } =>
+        entry.node !== null,
+    );
+
+  if (renderedActions.length === 0) {
+    return null;
+  }
+
   return (
-    <div className="border-b border-border p-2 pb-0 flex items-center justify-between">
+    <div className="flex items-center justify-between border-b border-border p-2 pb-0">
       <div className="flex items-center space-x-2 overflow-x-auto pb-2">
-        {proposal.actions.map((action) => mapActionToButton(action))}
+        {renderedActions.map(({ key, node }) => (
+          <span key={key}>{node}</span>
+        ))}
       </div>
     </div>
   );

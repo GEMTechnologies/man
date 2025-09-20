@@ -6,7 +6,6 @@ import { IpcClient } from "@/ipc/ipc_client";
 import { ChatHeader } from "./chat/ChatHeader";
 import { MessagesList } from "./chat/MessagesList";
 import { ChatInput } from "./chat/ChatInput";
-import { VersionPane } from "./chat/VersionPane";
 import { ChatError } from "./chat/ChatError";
 
 interface ChatPanelProps {
@@ -21,15 +20,12 @@ export function ChatPanel({
   onTogglePreview,
 }: ChatPanelProps) {
   const [messages, setMessages] = useAtom(chatMessagesAtom);
-  const [isVersionPaneOpen, setIsVersionPaneOpen] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const streamCount = useAtomValue(chatStreamCountAtom);
-  // Reference to store the processed prompt so we don't submit it twice
 
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
   const messagesContainerRef = useRef<HTMLDivElement | null>(null);
 
-  // Scroll-related properties
   const [isUserScrolling, setIsUserScrolling] = useState(false);
   const userScrollTimeoutRef = useRef<number | null>(null);
   const lastScrollTopRef = useRef<number>(0);
@@ -60,8 +56,7 @@ export function ChatPanel({
   };
 
   useEffect(() => {
-    console.log("streamCount", streamCount);
-    scrollToBottom();
+    scrollToBottom("instant");
   }, [streamCount]);
 
   useEffect(() => {
@@ -93,7 +88,6 @@ export function ChatPanel({
     fetchChatMessages();
   }, [fetchChatMessages]);
 
-  // Auto-scroll effect when messages change
   useEffect(() => {
     if (
       !isUserScrolling &&
@@ -115,29 +109,19 @@ export function ChatPanel({
   }, [messages, isUserScrolling]);
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex h-full flex-col">
       <ChatHeader
-        isVersionPaneOpen={isVersionPaneOpen}
         isPreviewOpen={isPreviewOpen}
         onTogglePreview={onTogglePreview}
-        onVersionClick={() => setIsVersionPaneOpen(!isVersionPaneOpen)}
       />
-      <div className="flex flex-1 overflow-hidden">
-        {!isVersionPaneOpen && (
-          <div className="flex-1 flex flex-col min-w-0">
-            <MessagesList
-              messages={messages}
-              messagesEndRef={messagesEndRef}
-              ref={messagesContainerRef}
-            />
-            <ChatError error={error} onDismiss={() => setError(null)} />
-            <ChatInput chatId={chatId} />
-          </div>
-        )}
-        <VersionPane
-          isVisible={isVersionPaneOpen}
-          onClose={() => setIsVersionPaneOpen(false)}
+      <div className="flex flex-1 flex-col overflow-hidden">
+        <MessagesList
+          messages={messages}
+          messagesEndRef={messagesEndRef}
+          ref={messagesContainerRef}
         />
+        <ChatError error={error} onDismiss={() => setError(null)} />
+        <ChatInput chatId={chatId} />
       </div>
     </div>
   );

@@ -65,6 +65,9 @@ import type {
   UpdatePromptParamsDto,
   McpServerUpdate,
   CreateMcpServer,
+  ExportDocumentPayload,
+  ExportSlidesPayload,
+  ExportResult,
 } from "./ipc_types";
 import type { Template } from "../shared/templates";
 import type {
@@ -479,6 +482,24 @@ export class IpcClient {
 
   public async showItemInFolder(fullPath: string): Promise<void> {
     await this.ipcRenderer.invoke("show-item-in-folder", fullPath);
+  }
+
+  public async exportDocumentAsDocx(
+    payload: ExportDocumentPayload,
+  ): Promise<ExportResult> {
+    return this.ipcRenderer.invoke("export:document:docx", payload);
+  }
+
+  public async exportDocumentAsPdf(
+    payload: ExportDocumentPayload,
+  ): Promise<ExportResult> {
+    return this.ipcRenderer.invoke("export:document:pdf", payload);
+  }
+
+  public async exportSlidesAsPptx(
+    payload: ExportSlidesPayload,
+  ): Promise<ExportResult> {
+    return this.ipcRenderer.invoke("export:slides:pptx", payload);
   }
 
   // Run an app
